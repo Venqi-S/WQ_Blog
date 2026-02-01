@@ -2,18 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2026/01/28/hello-world/</loc>
+    <loc>http://wqblog.xyz/2026/02/01/hello-world/</loc>
     
-    <lastmod>2026-01-28</lastmod>
+    <lastmod>2026-02-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/2026/01/28/note/</loc>
+    <loc>http://wqblog.xyz/2026/01/28/note/</loc>
     
-    <lastmod>2026-01-28</lastmod>
+    <lastmod>2026-02-01</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://wqblog.xyz/2026/01/29/%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2026-02-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -21,8 +30,8 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
-    <lastmod>2026-01-28</lastmod>
+    <loc>http://wqblog.xyz/</loc>
+    <lastmod>2026-02-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
