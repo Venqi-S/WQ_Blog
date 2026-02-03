@@ -1,4 +1,11 @@
-http://wqblog.xyz/2026/02/01/hello-world/
+http://wqblog.xyz/tags/index.html
+http://wqblog.xyz/2026/02/03/hello-world/
 http://wqblog.xyz/2026/01/28/note/
 http://wqblog.xyz/2026/01/29/%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/
+http://wqblog.xyz/2026/02/03/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/
+http://wqblog.xyz/categories/index.html
 http://wqblog.xyz/
+http://wqblog.xyz/tags/hexo/
+http://wqblog.xyz/tags/butterfly/
+http://wqblog.xyz/tags/GitHub-Actions/
+http://wqblog.xyz/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%86%99%E4%BD%9C/

@@ -1,0 +1,403 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>”静态博客搭建“ | 哈基启的博客</title><meta name="author" content="Wenqi_S,wq.shang.cn@gmail.com"><meta name="copyright" content="Wenqi_S"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基于 Hexo 静态博客框架构建，使用 Butterfly 主题进行界面定制，通过 GitHub Actions 实现自动化构建与部署，并结合 GitHub Pages 与自定义域名完成线上发布。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="”静态博客搭建“">
+<meta property="og:url" content="http://wqblog.xyz/2026/02/03/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="哈基启的博客">
+<meta property="og:description" content="基于 Hexo 静态博客框架构建，使用 Butterfly 主题进行界面定制，通过 GitHub Actions 实现自动化构建与部署，并结合 GitHub Pages 与自定义域名完成线上发布。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://repository-images.githubusercontent.com/5923215/ae16280b-260d-4167-8fa4-c533dad06177">
+<meta property="article:published_time" content="2026-02-03T19:10:10.000Z">
+<meta property="article:modified_time" content="2026-02-03T11:31:47.599Z">
+<meta property="article:author" content="Wenqi_S">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="butterfly">
+<meta property="article:tag" content="GitHub Actions">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://repository-images.githubusercontent.com/5923215/ae16280b-260d-4167-8fa4-c533dad06177"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "”静态博客搭建“",
+  "url": "http://wqblog.xyz/2026/02/03/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/",
+  "image": "https://repository-images.githubusercontent.com/5923215/ae16280b-260d-4167-8fa4-c533dad06177",
+  "datePublished": "2026-02-03T19:10:10.000Z",
+  "dateModified": "2026-02-03T11:31:47.599Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Wenqi_S",
+      "url": "http://wqblog.xyz"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://wqblog.xyz/2026/02/03/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":250,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":350,"languages":{"author":"作者: Wenqi_S","link":"链接: ","source":"来源: 哈基启的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '”静态博客搭建“',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="哈基启的博客" type="application/atom+xml">
+</head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/cute.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: transparent;"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/blog.svg" alt="Logo"><span class="site-name">哈基启的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">”静态博客搭建“</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">”静态博客搭建“</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-03T19:10:10.000Z" title="发表于 2026-02-03 19:10:10">2026-02-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-03T11:31:47.599Z" title="更新于 2026-02-03 11:31:47">2026-02-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%86%99%E4%BD%9C/">个人博客搭建与写作</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1>博客搭建</h1>
+<h2 id="环境准备">环境准备</h2>
+<h3 id="Git-安装">Git 安装</h3>
+<ol>
+<li>下载网址 <a target="_blank" rel="noopener" href="https://git-scm.com/downloads">Git</a></li>
+<li>打开命令提示符(CMD)验证安装版本:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<h3 id="Node-js-安装">Node.js 安装</h3>
+<ol>
+<li>下载网址 <a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js</a></li>
+<li>打开命令提示符(CMD)验证安装版本:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>给标准包管理器 npm 换源:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br></pre></td></tr></table></figure>
+<h3 id="Hexo-安装">Hexo 安装</h3>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo 官网</a></p>
+<p>打开安装好的 Git-Bash 运行，(<em>Git-Bash 中用右键鼠标进行复制粘贴</em> )</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>安装结束后，运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+<p>验证安装是否成功</p>
+<h3 id="GitHub-部署">GitHub 部署</h3>
+<p>打开 Git-Bash，运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &lt;你的用户名&gt;</span><br><span class="line">git config --global user.email &lt;你的邮箱&gt;</span><br><span class="line"></span><br><span class="line">e.g. 用户名和邮箱自己随便写，是用来推送的用户名和邮箱</span><br><span class="line">git config --global user.name Wenqi</span><br><span class="line">git config --global user.email wq.shang.cn@gmail.com</span><br></pre></td></tr></table></figure>
+<p>运行 <code>git config -l</code> 检查是否配置成功</p>
+<p>接着运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &lt;你的邮箱&gt;</span><br><span class="line"><span class="comment"># ssh-keygen     SSH 密钥生成工具，用来生成一对密钥：公钥和私钥</span></span><br><span class="line"><span class="comment"># -t rsa         -t = type，rsa表示使用RSA加密算法</span></span><br><span class="line"><span class="comment"># -C &lt;你的邮箱&gt;   -C = comment(注释)，通常写邮箱或用户名，这个注释不参与加密，只是标识用途</span></span><br><span class="line"><span class="comment"># 如果只写 ssh-keygen 则后面默认使用RSA加密算法</span></span><br><span class="line">e.g.</span><br><span class="line">ssh-keygen -t rsa -C wq.shang.cn@gmail.com</span><br></pre></td></tr></table></figure>
+<p>一直按 Enter 键就可以了</p>
+<p>密钥的默认位置在 <code>C:\Users\用户名</code> 文件夹下，需显示隐藏的项目，找到 <code>.ssh</code> 文件夹，里面有两个 <code>id_rsa</code> 文件，一个是公钥，一个是私钥</p>
+<p><strong>密钥用于此电脑连接至 GitHub</strong></p>
+<p><strong>注：如果之前搭梯子生成过密钥，即 <code>.ssh</code> 文件夹，里面已经有两个 <code>id_rsa</code> 文件了，就不用再生成了</strong></p>
+<hr>
+<p>密钥生成之后，用 VSCode 或记事本打开公钥文件，全选复制里面的内容</p>
+<p>登录 <a target="_blank" rel="noopener" href="https://github.com/">GitHub</a></p>
+<p>然后点右上角头像 &gt; Settings &gt; SSH and GPG keys &gt; New SSH key</p>
+<p>Title 随便起名，Key Type 默认，Key 的内容为公钥文件里的内容，之后点 Add SSH key</p>
+<p>运行以下代码测试连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>由于第一次连接，需要输入 yes 确认连接</p>
+<h2 id="新建-Hexo-项目">新建 Hexo 项目</h2>
+<p>新建并进入一个新文件夹，右键鼠标Open Git Bash here，运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"><span class="comment"># 进入刚创建好的文件夹</span></span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">e.g.</span><br><span class="line">hexo init Wenqi_Blog</span><br><span class="line"><span class="built_in">cd</span> Wenqi_Blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>Hexo 项目文件夹结构如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Wenqi_Blog/</span><br><span class="line">├── _config.yml        # 全局网站配置文件，定义站点标题、URL、目录结构等</span><br><span class="line">├── package.json       # 项目依赖与脚本管理文件</span><br><span class="line">├── scaffolds/         # 模板文件夹，存放创建文章、页面时使用的模板（archetypes）</span><br><span class="line">├── source/            # 网站内容文件夹</span><br><span class="line">│   ├── _drafts/       # 草稿文件夹，保存未发布的文章</span><br><span class="line">│   └── _posts/        # 文章文件夹，存放发布后的博客文章</span><br><span class="line">├── themes/            # 主题文件夹，可存放多个主题，激活时在 _config.yml 中指定</span><br><span class="line">└── public/            # 生成的静态文件目录（每次执行 hexo generate 时更新）</span><br></pre></td></tr></table></figure>
+<p><strong>详细说明：</strong></p>
+<ul>
+<li>
+<p><strong>_config.yml</strong></p>
+<p>存放全局配置，例如站点信息、URL规则、分页设置等，是 Hexo 的核心配置文件</p>
+</li>
+<li>
+<p><strong>package.json</strong></p>
+<p>用于管理项目的依赖项和脚本命令，方便扩展和自动化构建</p>
+</li>
+<li>
+<p><strong>scaffolds/</strong></p>
+<p>内涵默认的文章和页面模板，可以根据需要修改或新增自定义模板</p>
+</li>
+<li>
+<p><strong>source/</strong></p>
+<p>所有博客内容的存放地，按照用途划分为草稿（drafts）和正式文章（posts）文件夹，也可以在该文件夹中创建图片、附件等资源文件夹</p>
+</li>
+<li>
+<p><strong>themes/</strong></p>
+<p>存放博客主题，每个主题包含独立的布局、样式及部分配置文件</p>
+<p>安装主题后需在<code>_config.yml</code>中指定启用的主题名称</p>
+</li>
+<li>
+<p><strong>public/</strong></p>
+<p>每次生成静态站点文件时输出到此目录下，实际部署的即为该文件夹内容</p>
+<p>若需预览效果，在<code>Wenqi_Blog</code>文件夹中，右击鼠标打开 GitBash 运行<code>hexo s</code>查看生成后的页面</p>
+</li>
+</ul>
+<p>然后安装一些优化插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># SEO 优化</span></span><br><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
+<p><strong>配置 Hexo 可参考<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">官方配置文档</a></strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 生成一个静态文件</span></span><br><span class="line">hexo g </span><br><span class="line"><span class="comment"># 启动服务器。默认情况下，访问网址为：http://localhost:4000/</span></span><br><span class="line">hexo s </span><br><span class="line"><span class="comment"># 这两句常用来测试</span></span><br></pre></td></tr></table></figure>
+<p>在博客根目录下打开 GitBash ，输入<code>touch .gitignore</code>，复制下面内容</p>
+<p>（<span style="color:#FF0000;"><strong>注意</strong></span>在博客根目录下创建<code>.txt</code>文件命名为<code>.gitignore</code>  &lt;— 这种方法容易出错，容易找不到<code>.gitignore</code>文件，就干脆别用)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># dependencies</span><br><span class="line">node_modules/</span><br><span class="line"></span><br><span class="line"># hexo build output</span><br><span class="line">public/</span><br><span class="line">.deploy_git/</span><br><span class="line"></span><br><span class="line"># hexo / search db</span><br><span class="line">db.json</span><br><span class="line"></span><br><span class="line"># system files</span><br><span class="line">.DS_Store</span><br></pre></td></tr></table></figure>
+<p>因为部署是通过 GitHub Actions 自动部署，无需本地部署，只需要直接提交其他文件就行了，上面那些文件不用提交</p>
+<p>可以在 GitBash 中输入<code>cat .gitignore</code>检查一下</p>
+<h3 id="Hexo-主题安装">Hexo 主题安装</h3>
+<p>可参考</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly?tab=readme-ov-file">jerryc127/hexo-theme-butterfly: 🦋 A Hexo Theme: Butterfly</a></li>
+<li><a target="_blank" rel="noopener" href="https://butterfly.js.org/posts/21cfbf15/">Butterfly 文档（一） 快速开始 | Butterfly</a></li>
+</ul>
+<p><strong>注意要把博客源码提交到私人仓库并用GitHub Actions自动部署的话</strong></p>
+<ol>
+<li>
+<p>删除主题文件夹里的<code>.git</code></p>
+<p>执行<code>rm -rf themes/butterfly/.git</code></p>
+</li>
+<li>
+<p><strong>每次更新主题的话记得删除</strong><code>.git</code><strong>避免报错</strong></p>
+</li>
+</ol>
+<h2 id="托管到-GitHub">托管到 GitHub</h2>
+<ul>
+<li>
+<p>创建一个<strong>私有仓库</strong>，用于储存博客源代码</p>
+</li>
+<li>
+<p>创建一个<strong>公开仓库</strong>，用于显示博客</p>
+</li>
+<li>
+<p>点击右上角头像 &gt; settings &gt; Developer settings &gt; Person access tokens &gt; Tokens (classic) &gt; Generate new token (classic)</p>
+<ol>
+<li>Expiration(到期时间) &gt; No Expiration</li>
+<li>勾选上 repo 和 workflow</li>
+<li><strong>注意所有生成的令牌都不要删，以防误删哪个，避免麻烦</strong></li>
+</ol>
+</li>
+<li>
+<p>复制这个令牌</p>
+</li>
+<li>
+<p>在<strong>私有仓库</strong>(存源码的仓库)下 &gt; settings &gt; Secrets and variables &gt; Actions</p>
+<p>名字随便起，Secret 中粘贴刚才复制到令牌，</p>
+<p><strong>注意，Secret的名字用大写字母，可以有下划线</strong></p>
+</li>
+<li>
+<p>返回<strong>私有仓库Code界面，并选择SSH协议</strong>，可以看到一些提示的指令</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#…or create a new repository on the command line</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;# BlogSource&quot;</span> &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line">git branch -M main</span><br><span class="line">git remote add origin git@github.com:Venqi-S/BlogSource.git</span><br><span class="line">git push -u origin main</span><br><span class="line"></span><br><span class="line"><span class="comment">#…or push an existing repository from the command line</span></span><br><span class="line">git remote add origin git@github.com:Venqi-S/BlogSource.git</span><br><span class="line">git branch -M main</span><br><span class="line">git push -u origin main</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在<code>Wenqi_Blog</code>文件夹下，打开 GitBash
+<ol>
+<li>运行<code>git init</code></li>
+<li>运行<code>git remote add origin git@github.com:Venqi-S/BlogSource.git</code>进行远程连接</li>
+<li>运行<code>git branch -M main</code>将当前分支改为main，也可以是master</li>
+</ol>
+</li>
+<li>在<code>.github</code>文件夹下创建<code>workflows</code>文件夹，在<code>workflows</code>文件夹下创建<code>deploy.yml</code>文件</li>
+<li>使用 VSCode 打开<code>Wenqi_Blog</code>文件夹，编辑<code>.github\workflows\deploy.yml</code>文件将下面代码复制进去</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 工作流名称：显示在 GitHub Actions 页面</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">Hexo</span> <span class="string">Blog</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 触发条件：当向指定分支 push 时触发</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span>        <span class="comment"># 【可能需要改】如果你的源码分支是 master，这里要改成 master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">deploy:</span></span><br><span class="line">    <span class="comment"># 运行环境：使用 GitHub 提供的 Ubuntu</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="comment"># Step 1：检出源码仓库（Blog_Source）</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">Blog_Source</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v4</span></span><br><span class="line">        <span class="comment"># 默认会把当前仓库（Blog_Source）的代码拉到 runner 中</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># Step 2：安装 Node.js</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">Node.js</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="number">20</span>     <span class="comment"># 【不建议改】推荐用 LTS（18 / 20），不要用 24，这里的node版本与你下载的版本无关，所以不用改</span></span><br><span class="line">          <span class="attr">cache:</span> <span class="string">npm</span>           <span class="comment"># 启用 npm 缓存，加快 CI 速度</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># Step 3：安装依赖</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">ci</span></span><br><span class="line">        <span class="comment"># 使用 npm ci 而不是 npm install：</span></span><br><span class="line">        <span class="comment"># - 更快</span></span><br><span class="line">        <span class="comment"># - 严格按照 package-lock.json</span></span><br><span class="line">        <span class="comment"># - 更适合 CI 环境</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># Step 4：构建 Hexo（生成 public 目录）</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span> <span class="string">Hexo</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          npx hexo clean       # 清理缓存和旧的生成文件</span></span><br><span class="line"><span class="string">          npx hexo generate    # 生成静态文件到 ./public</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="comment"># Step 5：部署 public 到 Wenqi_Blog 仓库</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">to</span> <span class="string">Wenqi_Blog</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">keep_files:</span> <span class="literal">false</span></span><br><span class="line">          <span class="comment"># false = 目标仓库内容将完全以 public 为准</span></span><br><span class="line">          <span class="comment"># 【推荐保持 false】避免删除文章后网页还残留</span></span><br><span class="line"></span><br><span class="line">          <span class="attr">personal_token:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.刚才起的Secret的名字</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="comment"># 【可能需要改】</span></span><br><span class="line">          <span class="comment"># secret 名必须和 Blog_Source 仓库里设置的一致</span></span><br><span class="line">          <span class="comment"># 你现在用的是 FOR_BLOG，这是正确的</span></span><br><span class="line"></span><br><span class="line">          <span class="attr">external_repository:</span> <span class="string">GitHub用户名/目标仓库名</span></span><br><span class="line">          <span class="comment"># 【可能需要改】</span></span><br><span class="line">          <span class="comment"># 格式：GitHub用户名/目标仓库名</span></span><br><span class="line">          <span class="comment"># 这是你的“博客展示仓库（公开仓库）”</span></span><br><span class="line"></span><br><span class="line">          <span class="attr">publish_branch:</span> <span class="string">main</span></span><br><span class="line">          <span class="comment"># 【可能需要改】</span></span><br><span class="line">          <span class="comment"># Wenqi_Blog 的默认分支</span></span><br><span class="line">          <span class="comment"># 如果是 master，就要改成 master</span></span><br><span class="line"></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br><span class="line">          <span class="comment"># 【一般不用改】</span></span><br><span class="line">          <span class="comment"># Hexo 默认生成目录就是 public（注意大小写）</span></span><br><span class="line">		 <span class="comment"># GitHub 给我写的</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在博客根目录下，打开GitBash，依次输入</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#第一次输入</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line">git push -u origin main</span><br><span class="line"></span><br><span class="line"><span class="comment">#以后提交就直接输入</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;提交时的备注&quot;</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>回到<strong>公开仓库</strong>刷新一下，可以看到本地博客文件夹里的<code>pubilc</code>文件夹的内容被推送上来</p>
+<p>Settings &gt; Pages &gt; Branch 选择<code>main/(root)</code> &gt; save</p>
+</li>
+</ul>
+<h2 id="自定义域名访问博客">自定义域名访问博客</h2>
+<ol>
+<li>
+<p>购买一个域名 <a target="_blank" rel="noopener" href="https://www.namesilo.com/">Cheap Domain Names &amp; Web Hosting Starting at $0.99!</a></p>
+<p>只要一个 whois 就行，别的付费项目不需要</p>
+</li>
+<li>
+<p>进入 <a target="_blank" rel="noopener" href="https://www.cloudflare-cn.com/">随时随地连接、保护和构建 | Cloudflare</a> &gt; 添加域 &gt; 输入刚才买的域名其他保持默认选择 &gt; 点击继续</p>
+</li>
+<li>
+<p>选则免费的，点击继续</p>
+</li>
+<li>
+<p>全部删除，点击继续，然后选择确认</p>
+<p><img src="https://raw.githubusercontent.com/Venqi-S/my_Blog_image/main/20260131220854718.png" alt=""></p>
+<p>进入到下面的界面</p>
+<p><img src="https://raw.githubusercontent.com/Venqi-S/my_Blog_image/main/20260131221512110.png" alt=""></p>
+</li>
+<li>
+<p>返回 NameSilo &gt; 进入个人主页 &gt; 点击manage &gt; 按顺序点击</p>
+<p><img src="https://raw.githubusercontent.com/Venqi-S/my_Blog_image/main/20260131222213366.png" alt=""></p>
+</li>
+<li>
+<p>然后将所有的 NameSever 都删除，把第四步出现的两个 Cloudflare 都粘贴进去，点击submit</p>
+</li>
+<li>
+<p>返回 Cloudflare &gt; 点击我已更新名称服务器 &gt; 刷新一下界面等待成功（大约半个多小时）&gt; 点击刚才添加的域名 &gt; 选择左侧 DNS &gt; 记录</p>
+</li>
+<li>
+<p>打开GitHub 博客的公开仓库 &gt; Settings &gt; Pages &gt; Custom domain &gt; Learn more about configuring custom domains &gt; Manage a custom domain &gt; 找到第五条的八个 IP 地址</p>
+</li>
+<li>
+<p>返回 Cloudflare 添加四个 A 记录和四个 AAAA 记录，名称都写@，且先关闭自动代理状态（方便 GitHub 识别域名的解析），其他保持默认</p>
+<p>把八条解析记录都添加进去</p>
+</li>
+<li>
+<p>在本地文件<code>_config.yml</code>中修改 url 为<code>http://自己的域名</code>，然后上传至 GitHub</p>
+<p>add &gt; commit &gt; push</p>
+</li>
+<li>
+<p>返回 GitHub 在 Custom domain 填写自己买的域名 &gt; 点击 save</p>
+</li>
+<li>
+<p>最后在 Cloudflare 中把每个记录启用代理，然后稍等一会，就能用自己的新域名访问博客了</p>
+</li>
+</ol>
+<p><strong>注：</strong></p>
+<p>出现图片中的情况是因为</p>
+<p>网站裸域名 (Apex domain) <code>wqblog.xyz</code> 已经正确指向 GitHub Pages（A/AAAA 记录均已配置），所以 <code>wqblog.xyz</code> 可以正常访问。但 <code>www.wqblog.xyz</code> 在 DNS 中是一个<strong>独立的子域名</strong>，目前没有配置任何记录，导致 GitHub Pages 提示 <code>www.wqblog.xyz is improperly configured</code>。解决方法是在 DNS 中新增一条 <strong>CNAME 记录</strong>，将 <code>www</code> 指向 <code>venqi-s.github.io</code>，使 <code>www.wqblog.xyz</code> 与裸域名同时生效，并由 GitHub Pages 自动处理 HTTPS 和跳转。(ChatGPT 说的)</p>
+<p><img src="https://raw.githubusercontent.com/Venqi-S/my_Blog_image/main/20260201105334256.png" alt=""></p>
+<p>所以返回 Cloudflare ，再添加一个记录</p>
+<p>类型 <code>CNAME</code>， 名称 <code>www</code> ，内容 <code>venqi-s.github.io</code> 上图红框的内容，其他默认</p>
+<p>稍等一会，返回 GitHub 刷新一下就没有警告了</p>
+<h1>参考链接</h1>
+<ol>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.xmdblog.com/posts/70db7d7c.html">Hexo 博客搭建教程 | 小明的部落格</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1URwNetEQ8/?share_source=copy_web&amp;vd_source=6b4b78bf8c8d1209d013b4df59f35fd8">【教程】Hexo 个人博客搭建教程 </a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14YxDeCECh/?share_source=copy_web&amp;vd_source=6b4b78bf8c8d1209d013b4df59f35fd8">【保姆】手把手搭建 hexo 博客与自动部署和图床说明</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fNNreEEDi/?share_source=copy_web&amp;vd_source=6b4b78bf8c8d1209d013b4df59f35fd8">【大学生提高课】3 hexo 与 hugo 博客搭建与 github 自动化推送和服务器推送</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV12o4y1K79H/?share_source=copy_web&amp;vd_source=6b4b78bf8c8d1209d013b4df59f35fd8">【Hexo | 02】使用自定义域名访问博客</a></p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://wqblog.xyz">Wenqi_S</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://wqblog.xyz/2026/02/03/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">http://wqblog.xyz/2026/02/03/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://wqblog.xyz" target="_blank">哈基启的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/hexo/">hexo</a><a class="post-meta__tags" href="/tags/butterfly/">butterfly</a><a class="post-meta__tags" href="/tags/GitHub-Actions/">GitHub Actions</a></div><div class="post-share"><div class="social-share" data-image="https://repository-images.githubusercontent.com/5923215/ae16280b-260d-4167-8fa4-c533dad06177" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Wenqi_S</div><div class="author-info-description">个人学习记录</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Venqi-S" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:wq.shang.cn@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">博客搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.1.</span> <span class="toc-text">Git 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js-%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.2.</span> <span class="toc-text">Node.js 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo-%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.3.</span> <span class="toc-text">Hexo 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GitHub-%E9%83%A8%E7%BD%B2"><span class="toc-number">1.1.4.</span> <span class="toc-text">GitHub 部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA-Hexo-%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.2.</span> <span class="toc-text">新建 Hexo 项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo-%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.1.</span> <span class="toc-text">Hexo 主题安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%98%E7%AE%A1%E5%88%B0-GitHub"><span class="toc-number">1.3.</span> <span class="toc-text">托管到 GitHub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.4.</span> <span class="toc-text">自定义域名访问博客</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">参考链接</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/02/03/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="”静态博客搭建“"><img src="https://repository-images.githubusercontent.com/5923215/ae16280b-260d-4167-8fa4-c533dad06177" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="”静态博客搭建“"/></a><div class="content"><a class="title" href="/2026/02/03/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="”静态博客搭建“">”静态博客搭建“</a><time datetime="2026-02-03T19:10:10.000Z" title="发表于 2026-02-03 19:10:10">2026-02-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/03/hello-world/" title="Hello World">Hello World</a><time datetime="2026-02-03T11:31:47.599Z" title="发表于 2026-02-03 11:31:47">2026-02-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/29/%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/" title="数学笔记">数学笔记</a><time datetime="2026-01-29T16:30:10.000Z" title="发表于 2026-01-29 16:30:10">2026-01-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/28/note/" title="note">note</a><time datetime="2026-01-28T13:55:03.000Z" title="发表于 2026-01-28 13:55:03">2026-01-28</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent;"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Wenqi_S</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div><div class="footer_custom_text">Hi, welcome to my <a href="https://wqblog.xyz/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>(async () => {
+  const showKatex = () => {
+    document.querySelectorAll('#article-container .katex').forEach(el => el.classList.add('katex-show'))
+  }
+
+  if (!window.katex_js_css) {
+    window.katex_js_css = true
+    await btf.getCSS('https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css')
+    if (true) {
+      await btf.getScript('https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/copy-tex.min.js')
+    }
+  }
+
+  showKatex()
+})()</script></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-heart.min.js" async="async" mobile="true"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
