@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://wqblog.xyz/archives/f7ade587.html</loc>
-    
-    <lastmod>2026-02-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://wqblog.xyz/archives/a91eaa72.html</loc>
     
     <lastmod>2026-02-15</lastmod>
@@ -57,6 +48,15 @@
   
   <url>
     <loc>https://wqblog.xyz/categories/index.html</loc>
+    
+    <lastmod>2026-02-15</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://wqblog.xyz/archives/f7ade587.html</loc>
     
     <lastmod>2026-02-15</lastmod>
     
