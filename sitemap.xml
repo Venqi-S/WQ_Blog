@@ -4,7 +4,7 @@
   <url>
     <loc>https://wqblog.xyz/tags/</loc>
     
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,7 +13,7 @@
   <url>
     <loc>https://wqblog.xyz/archives/93ecec.html</loc>
     
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -22,7 +22,7 @@
   <url>
     <loc>https://wqblog.xyz/archives/aa5025db.html</loc>
     
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -31,7 +31,7 @@
   <url>
     <loc>https://wqblog.xyz/archives/790b978.html</loc>
     
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,7 +40,7 @@
   <url>
     <loc>https://wqblog.xyz/archives/68bbb010.html</loc>
     
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -49,7 +49,7 @@
   <url>
     <loc>https://wqblog.xyz/archives/24033515.html</loc>
     
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -58,7 +58,7 @@
   <url>
     <loc>https://wqblog.xyz/archives/56986178.html</loc>
     
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -67,7 +67,7 @@
   <url>
     <loc>https://wqblog.xyz/about/</loc>
     
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -76,7 +76,7 @@
   <url>
     <loc>https://wqblog.xyz/categories/</loc>
     
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -94,7 +94,7 @@
 
   <url>
     <loc>https://wqblog.xyz/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -102,98 +102,105 @@
   
   <url>
     <loc>https://wqblog.xyz/tags/PicGo/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/Typora/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/GitHub/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/Gitee/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/Git/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/Git-Bash/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/Python/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/Pytorch/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/Anaconda/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/Pycharm/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wqblog.xyz/tags/CUDA/</loc>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/hexo/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/butterfly/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/git/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/tags/GitHub-Actions/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -202,21 +209,21 @@
   
   <url>
     <loc>https://wqblog.xyz/categories/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B8%8E%E5%86%99%E4%BD%9C/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/categories/Git/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://wqblog.xyz/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2026-03-08</lastmod>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
