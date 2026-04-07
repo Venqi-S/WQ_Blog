@@ -11,6 +11,15 @@
   </url>
   
   <url>
+    <loc>https://wqblog.xyz/archives/93ecec.html</loc>
+    
+    <lastmod>2026-04-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://wqblog.xyz/archives/e1a1c742.html</loc>
     
     <lastmod>2026-04-07</lastmod>
@@ -21,15 +30,6 @@
   
   <url>
     <loc>https://wqblog.xyz/archives/aa5025db.html</loc>
-    
-    <lastmod>2026-04-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://wqblog.xyz/archives/93ecec.html</loc>
     
     <lastmod>2026-04-07</lastmod>
     
@@ -165,6 +165,20 @@
   </url>
   
   <url>
+    <loc>https://wqblog.xyz/tags/Git/</loc>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://wqblog.xyz/tags/Git-Bash/</loc>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://wqblog.xyz/tags/POD/</loc>
     <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -222,20 +236,6 @@
   
   <url>
     <loc>https://wqblog.xyz/tags/CUDA/</loc>
-    <lastmod>2026-04-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wqblog.xyz/tags/Git/</loc>
-    <lastmod>2026-04-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wqblog.xyz/tags/Git-Bash/</loc>
     <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -314,6 +314,13 @@
   </url>
   
   <url>
+    <loc>https://wqblog.xyz/categories/Git/</loc>
+    <lastmod>2026-04-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://wqblog.xyz/categories/%E6%A8%A1%E6%80%81%E5%88%86%E8%A7%A3/</loc>
     <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -322,13 +329,6 @@
   
   <url>
     <loc>https://wqblog.xyz/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2026-04-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://wqblog.xyz/categories/Git/</loc>
     <lastmod>2026-04-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
