@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>NUMECA安装教程</title>
+      <link href="/archives/460cc3f9.html"/>
+      <url>/archives/460cc3f9.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="软件安装">软件安装</h2><h3 id="安装Turbo-17-1">安装Turbo.17.1</h3><ol><li>进入文件夹 <code>NUMECA.FineTurbo.17.1.Win64</code><br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710122400889.png" alt=""></li><li>进入文件夹 <code>NUMECA.FineTurbo.17.1.Win64</code><br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710122518746.png" alt=""></li><li>右键以管理员身份运行 <code>setup.exe</code><br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710122803459.png" alt=""></li><li>点击 <code>Yes</code> <code>Next</code> 然后选择安装位置<br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710123211568.png" alt=""></li><li>然后点击 <code>Next</code> 等待一段时间</li><li>点击确定<br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710123707233.png" alt=""></li><li>点右上角的×，然后选择 <code>Yes</code><br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710123907964.png" alt=""></li><li>选择 <code>No</code> 点击 <code>Finish</code><br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710124020648.png" alt=""></li></ol><h3 id="License-许可">License 许可</h3><ol><li><p>进入 <code>NUMECA.FineTurbo.17.1.Crack</code> 文件夹<br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710125024091.png" alt=""></p></li><li><p>拷贝 <code>NUMECA_License_Server_11.16.4.0_x64</code> 文件夹至刚才安装 <code>Turbo.17.1</code> 的位置<br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710125737168.png" alt=""></p></li><li><p>进入 <code>NUMECA_License_Server_11.16.4.0_x64</code> 文件夹，分别双击 <code>SolidSQUADLoaderEnabler.reg</code> ，<code>numeca_SSQ.reg</code> 将其添加到 Windows 注册表中<br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710130140503.png" alt=""></p></li><li><p>以管理员身份运行 <code>server_install.bat</code> ，然后等一会，会显示<strong>服务启动成功</strong><br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710130422091.png" alt=""></p></li></ol><blockquote><p>如果之前已经安装过 Numeca 且存在 previous SSQ’s NUMECA License Server 则需要卸载许可证</p><ol><li>进入 <code>NUMECA_License_Server_11.16.4.0_x64</code> 文件夹（这个文件夹是刚刚复制到安装 <code>Turbo.17.1</code> 的那个，完整路径是 <code>E:\Numeca\NUMECA_License_Server_11.16.4.0_x64</code>）</li><li>右键以管理员身份运行 <code>server_remove.bat</code><br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710125319556.png" alt=""></li><li>最后删除 <code>NUMECA_License_Server_11.16.4.0_x64</code> 文件夹</li></ol></blockquote><h3 id="Crack-替换">Crack 替换</h3><ol><li><p>进入 <code>NUMECA.FineTurbo.17.1.Crack\fine171</code> 文件夹，全选复制<br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710131411553.png" alt=""></p></li><li><p>粘贴到刚刚安装 Numeca 路径下的 <code>fine171</code> 文件夹里，并替换<br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710131534166.png" alt=""></p></li><li><p>重启一下电脑</p></li></ol><h2 id="许可证到期">许可证到期</h2><p>出现下面的情况可能是许可证到期了</p><p><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710132946015.png" alt=""></p><p>解决办法：</p><ol><li>进入 <code>NUMECA_License_Server_11.16.4.0_x64</code> 文件夹（这个文件夹是刚刚复制到安装 <code>Turbo.17.1</code> 的那个，完整路径是 <code>E:\Numeca\NUMECA_License_Server_11.16.4.0_x64</code>）</li><li>用记事本打开 <code>numeca_SSQ.lic</code> 文件<br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710134501478.png" alt=""></li><li>可以看到将里面的年份往后延续几年，比如将2024全部替换为3024<br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710134734839.png" alt=""></li><li>然后右键管理员身份运行 <code>lmtools</code> ，按顺序点击<br><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260710134953777.png" alt=""></li><li>然后就能正常使用了</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件安装教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Numeca </tag>
+            
+            <tag> FineTurbo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Types of Journal Articles</title>
       <link href="/archives/eea92ff3.html"/>
       <url>/archives/eea92ff3.html</url>
