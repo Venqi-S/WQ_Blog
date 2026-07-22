@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Word文档恢复</title>
+      <link href="/archives/9c0f47f5.html"/>
+      <url>/archives/9c0f47f5.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="手动检查自动恢复目录">手动检查自动恢复目录</h2><ol><li><p>按 <code>win + R</code>，依次输入并检查</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%LocalAppData%\Microsoft\Office\UnsavedFiles</span><br><span class="line">%AppData%\Microsoft\Word</span><br><span class="line">%TEMP%</span><br></pre></td></tr></table></figure></li><li><p>查看文件夹里是否有刚刚未保存的文件</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Word </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Word </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>NUMECA安装教程</title>
       <link href="/archives/460cc3f9.html"/>
       <url>/archives/460cc3f9.html</url>
@@ -423,7 +448,7 @@
       <link href="/archives/24033515.html"/>
       <url>/archives/24033515.html</url>
       
-        <content type="html"><![CDATA[<h2 id="新电脑恢复博客流程">新电脑恢复博客流程</h2><p>参照这篇 <a href="https://wqblog.xyz/archives/56986178.html">静态博客搭建 | 哈基启的博客</a> 把 1.1 环境部署章节做完</p><p>尽量保证下载的版本与之前电脑都一样</p><p><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260221144655480.png" alt=""></p><p>然后找一个位置存放博客，右键鼠标打开 Git-Bash</p><ol><li><code>git clone https://github.com/Venqi-S/Blog_Source.git</code> 进入下载好的目录</li><li><code>npm install</code>  根据 <code>package.json</code> <code>package-lock.json</code>安装依赖生成 <code>node_modules/</code> （执行这步的原因是因为，我在 <code>.gitignore</code> 中加入了 <code>node_modules/</code> ，所以这个文件夹没有提交到远程仓库，需要在本地重新生成）</li></ol><h2 id="如何在两台电脑写博客">如何在两台电脑写博客</h2><ol><li>每次准备写之前先在博客根目录使用 <code>git pull</code> 用于从远程获取代码并合并本地的版本</li></ol><p>先从远程仓库获取最新的提交记录，然后将这些提交记录合并到你当前的分支中。</p><ol start="2"><li>然后正常 add &gt; commit &gt; push</li></ol><h2 id="注意事项">注意事项</h2><ol><li>什么时候需要运行 <code>npm install</code>  ？<ul><li>这台电脑第一次运行这个项目</li><li>当更改了一些依赖时（改了 package.json / package-lock.json）之后：建议在另一台电脑也跑一次</li><li>其他时候：不一定需要，但跑了也不会坏（只是花点时间）</li></ul></li><li>永远先“pull”再写</li><li>尽量不要两台电脑同时改一篇文章</li></ol>]]></content>
+        <content type="html"><![CDATA[<h2 id="新电脑恢复博客流程">新电脑恢复博客流程</h2><p>参照这篇 <a href="https://wqblog.xyz/archives/56986178.html">静态博客搭建 | 哈基启的博客</a> 把 1.1 环境部署章节做完</p><p>尽量保证下载的版本与之前电脑都一样</p><p><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260221144655480.png" alt=""></p><p>然后找一个位置存放博客，右键鼠标打开 Git-Bash</p><ol><li><code>git clone https://github.com/Venqi-S/Blog_Source.git</code> 进入下载好的目录</li><li><code>npm install</code>  根据 <code>package.json</code> <code>package-lock.json</code>安装依赖生成 <code>node_modules/</code> （执行这步的原因是因为，我在 <code>.gitignore</code> 中加入了 <code>node_modules/</code> ，所以这个文件夹没有提交到远程仓库，需要在本地重新生成）</li></ol><h2 id="如何在两台电脑写博客">如何在两台电脑写博客</h2><ol><li><p>每次准备写之前先在博客根目录使用 <code>git pull</code> 用于从远程获取代码并合并本地的版本</p><p>先从远程仓库获取最新的提交记录，然后将这些提交记录合并到你当前的分支中。</p></li><li><p>然后正常 add &gt; commit &gt; push</p></li></ol><h2 id="注意事项">注意事项</h2><ol><li>什么时候需要运行 <code>npm install</code>  ？<ul><li>这台电脑第一次运行这个项目</li><li>当更改了一些依赖时（改了 package.json / package-lock.json）之后：建议在另一台电脑也跑一次</li><li>其他时候：不一定需要，但跑了也不会坏（只是花点时间）</li></ul></li><li>永远先“pull”再写</li><li>尽量不要两台电脑同时改一篇文章</li></ol>]]></content>
       
       
       <categories>
