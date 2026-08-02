@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Numeca并行计算遇到的问题</title>
+      <link href="/archives/595ea05a.html"/>
+      <url>/archives/595ea05a.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="问题描述">问题描述</h2><p>在 Numeca 的并行计算时，<code>Solver Configuration</code> 中选择了 <code>MPICH2</code> 求解计算的时候特别慢，CPU 利用率很低</p><p><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260801093400648.jpg" alt="8952f49585496a6b20534e61adf9cf13"></p><p>然后我把 <code>Solver Configuration</code> 改成了 <code>IntelMPI</code> 结果就卡在那里一动不动</p><p><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260801093658073.jpg" alt="596af223d04dd5d590c1322fd1f39008"></p><p>然后参照 <a href="https://www.bilibili.com/video/BV1zW4y1A7tP/?spm_id_from=333.337.search-card.all.click&amp;vd_source=d63c00be80a9a318239fa3d47f878665">【软件技巧】FineTurbo系列教程-并行卡住问题的解决办法_哔哩哔哩_bilibili</a> 尝试解决但是无效。运行 <code>.bat</code> 文件，并没有启动运算，只跳出了如下界面</p><p><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260801095002691.png" alt="666"></p><p>被挡住的文字是 Credentials for <span style="background:#FFFF00;">buaa</span> rejected connecting to DESKTOP-ISAPFN7 就是报错了</p><h2 id="问题发生原因">问题发生原因</h2><p>在第一次运行并行运算时，会弹出如下界面</p><p><img src="https://wqblog-img.oss-cn-beijing.aliyuncs.com/image/20260801095425953.png" alt="893ae7811490266aa7e45c6f1608629e"></p><p>在 <code>Solver Configuration</code> 中选择 <code>MPICH2</code> 会弹出一次，换成 <code>IntelMPI</code> 也会弹出一次，然后会让你输入电脑的用户名和电脑的密码（密码不显示）。我当时不知道，在选择 <code>IntelMPI</code> 时我输入的不是电脑用户名 <code>Wenqi</code> ，而是随手起了一个用户名 <code>buaa</code> 导致并行计算时卡住，且报错 <code>Credentials for buaa rejected connecting to DESKTOP-ISAPFN7</code></p><h2 id="解决方法">解决方法</h2><h3 id="如何查看电脑用户名">如何查看电脑用户名</h3><p><code>win + r</code> 输入 <code>cmd</code> 打开命令提示符，输入 <code>whoami</code> ，会输出 <code>计算机名\用户名</code></p><blockquote><p>Windows 的本地账户认证、注册表和 Intel MPI/Hydra 一般都以不区分大小写的方式匹配用户名</p><p>即 Wenqi，wenqi，WENQI… 都是同一个用户。SID 是 Windows 内部用于唯一标识账户的编号，用户名显示时的大小写通常不会影响身份认证。</p></blockquote><h3 id="方法1">方法1</h3><p>卸载重新安装，然后并行运算时账户名和密码别输入错了，CPU利用率低就换一个 <code>Solver Configuration</code></p><h3 id="方法2">方法2</h3><ol><li>检查 Windows 凭据管理器</li></ol><blockquote><p>控制面板<br>→ 用户账户<br>→ 凭据管理器<br>→ Windows 凭据</p></blockquote><p>但是没有发现与错误用户名 <code>buaa</code>、Intel MPI 或 NUMECA 有关的 Windows 凭据。如果发现了就把关于错误用户名的凭据删除掉，看不懂的先问一下 AI，不要乱删</p><ol start="2"><li>在注册表中查找错误用户名</li></ol><p>在命令提示符中输入 <code>reg query HKCU /f &quot;buaa&quot; /s</code> ，引号里面是错误的用户名</p><p>其中：</p><ul><li><code>HKCU</code> 表示当前 Windows 用户的注册表配置。</li><li><code>/f &quot;buaa&quot;</code> 表示搜索内容 <code>buaa</code>。</li><li><code>/s</code> 表示递归搜索所有子项。</li></ul><p>搜索结果如下：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CURRENT_USER\Software\Intel\MPI</span><br><span class="line">    hydraAccount    REG_SZ    buaa</span><br><span class="line"></span><br><span class="line">HKEY_CURRENT_USER\Software\Intel\MPI\HYDRA\CACHE</span><br><span class="line">    smpda           REG_SZ    buaa</span><br></pre></td></tr></table></figure><p>这说明问题已经定位：<code>HKEY_CURRENT_USER\Software\Intel\MPI</code> 中 <code>hydraAccount</code> 保存了 Intel MPI/Hydra 默认使用的账户，而它的值被错误设置成了 <code>buaa</code>。<code>HKEY_CURRENT_USER\Software\Intel\MPI\HYDRA\CACHE</code> 中的 <code>smpda</code> 也缓存了旧用户名 <code>buaa</code>。因此，NUMECA 每次启动 Intel MPI 并行任务时，都会继续尝试使用错误账户，进而导致认证失败。</p><ol start="3"><li>修复方法</li></ol><ul><li><p><strong>关闭 Numeca</strong></p></li><li><p><strong>备份 Intel MPI 注册表配置</strong></p></li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg export &quot;HKCU\Software\Intel\MPI&quot; &quot;%USERPROFILE%\Desktop\Intel_MPI_backup.reg&quot; /y</span><br></pre></td></tr></table></figure><p>执行后，桌面会生成：<code>Intel_MPI_backup.reg</code> 。如果后续需要恢复，可以使用该备份文件。</p><ul><li><strong>修改 Intel MPI 默认账户</strong></li></ul><p>将 <code>hydraAccount</code> 从错误的 <code>buaa</code> 改为当前 Windows 用户 <code>Wenqi</code>：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg add &quot;HKCU\Software\Intel\MPI&quot; /v hydraAccount /t REG_SZ /d Wenqi /f</span><br></pre></td></tr></table></figure><blockquote><p>参数含义如下：</p><ol><li><p><code>/v hydraAccount</code>：指定要修改的注册表值。</p></li><li><p><code>/t REG_SZ</code>：数据类型为字符串。</p></li><li><p><code>/d Wenqi</code>：将值设置为 <code>Wenqi</code>。</p></li><li><p><code>/f</code>：不再询问，直接覆盖旧值。</p></li></ol><p>也可以填写小写的 <code>wenqi</code>，Windows 本地账户认证通常不区分用户名大小写。</p></blockquote><ul><li><strong>删除旧的 Hydra 缓存</strong></li></ul><p>执行：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg delete &quot;HKCU\Software\Intel\MPI\HYDRA\CACHE&quot; /v smpda /f</span><br></pre></td></tr></table></figure><p>这条命令只删除 <code>CACHE</code> 下名为 <code>smpda</code> 的旧用户名缓存，不会删除整个 Intel MPI 配置。</p><p>这样做的目的是避免 Hydra 继续读取先前缓存的 <code>buaa</code>。</p><ul><li><strong>验证修改结果</strong></li></ul><p>执行：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reg query &quot;HKCU\Software\Intel\MPI&quot; /s</span><br></pre></td></tr></table></figure><p>如果没有再找到 Intel MPI 中的 <code>buaa</code>，说明旧账户配置已经清理完成。</p><p>重新打开 NUMECA/FINE 17.1 并启动并行计算后，Intel MPI 即可使用正确账户运行。问题在完成以上修改后得到解决。</p><h2 id="总结">总结</h2><p>本次故障的根本原因是：第一次使用 Intel MPI 并行计算时，误将 Windows 用户名填写错，Intel MPI/Hydra 又将错误用户名保存到了当前用户的注册表配置中，导致后续任务始终使用错误账户进行认证。CPU 利用率低在切换 <code>Solver Configuration</code> 为 <code>IntelMPI</code> 后也得到了解决。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Numeca </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Numeca </tag>
+            
+            <tag> Fineturbo </tag>
+            
+            <tag> Parrallel Partitioned Computation </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C语言数据类型和变量</title>
       <link href="/archives/68e15263.html"/>
       <url>/archives/68e15263.html</url>
@@ -419,11 +448,11 @@
             
             <tag> 矩阵分解 </tag>
             
-            <tag> POD </tag>
+            <tag> SVD </tag>
             
             <tag> 线性代数 </tag>
             
-            <tag> SVD </tag>
+            <tag> POD </tag>
             
         </tags>
       
@@ -448,11 +477,11 @@
       
         <tags>
             
-            <tag> 线性代数 </tag>
-            
             <tag> SVD </tag>
             
             <tag> 奇异值分解 </tag>
+            
+            <tag> 线性代数 </tag>
             
         </tags>
       
